@@ -37,6 +37,14 @@ public class DriverManager {
 	// Inicializar el driver local
 	private void initLocalDriver() {
 		System.setProperty("webdriver.chrome.driver", "D:\\chromedriver\\chromedriver.exe");
+		
+		ChromeOptions options = new ChromeOptions();
+	    if (Boolean.parseBoolean(System.getenv("HEADLESS"))) {
+	        options.addArguments("--headless");
+	        options.addArguments("--no-sandbox");
+	        options.addArguments("--disable-dev-shm-usage");
+	    }
+		
 		driver = new ChromeDriver();
 	}
 
