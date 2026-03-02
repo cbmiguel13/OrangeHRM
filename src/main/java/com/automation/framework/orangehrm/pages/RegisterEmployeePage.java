@@ -62,7 +62,7 @@ public class RegisterEmployeePage {
 	public String fillForm(String firstName, String middleName, String lastName, String rutaFotoPerfil) {
 
 		String newRutaFotoPerfil = System.getProperty("user.dir") + File.separator + rutaFotoPerfil;
-		
+		System.out.println(newRutaFotoPerfil);
 		File archivo = new File(newRutaFotoPerfil);
 		if (!archivo.exists()) {
 			return "La ruta la imagen que se va a ingresar como foto de perfil no existe";
