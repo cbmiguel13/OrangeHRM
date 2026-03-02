@@ -29,7 +29,7 @@ public class DriverManager {
 			driver.manage().window().maximize();
 
 		} catch (Exception e) {
-			System.out.println("Error al inicializar el driver [" + e.getMessage() + "]");
+			  System.out.println("Error al inicializar el driver [" + e.getMessage() + "]");
 		}
 
 	}
@@ -37,36 +37,31 @@ public class DriverManager {
 	// Inicializar el driver local
 	private void initLocalDriver() {
 		System.setProperty("webdriver.chrome.driver", "D:\\chromedriver\\chromedriver.exe");
-
-		ChromeOptions options = new ChromeOptions();
-		if (Boolean.parseBoolean(System.getenv("HEADLESS"))) {
-			options.addArguments("--headless");
-			options.addArguments("--no-sandbox");
-			options.addArguments("--disable-dev-shm-usage");
-		}
-
 		driver = new ChromeDriver();
 	}
 
 	private void initBrowserStackDriver() throws Exception {
 		DesiredCapabilities caps = new DesiredCapabilities();
 
-		HashMap<String, Object> browserstackOptions = new HashMap<>();
-		browserstackOptions.put("os", "Windows");
-		browserstackOptions.put("osVersion", "11");
-		browserstackOptions.put("browserVersion", "latest");
-		browserstackOptions.put("projectName", "OrangeHRM");
-		browserstackOptions.put("buildName", "Build 1.0");
-		browserstackOptions.put("sessionName", "Flujo Completo");
+        HashMap<String, Object> browserstackOptions = new HashMap<>();
+        browserstackOptions.put("os", "Windows");
+        browserstackOptions.put("osVersion", "11");
+        browserstackOptions.put("browserVersion", "latest");
+        browserstackOptions.put("projectName", "OrangeHRM");
+        browserstackOptions.put("buildName", "Build 1.0");
+        browserstackOptions.put("sessionName", "Flujo Completo");
 
-		caps.setCapability("browserName", "Chrome");
-		caps.setCapability("browserVersion", " latest");
-		caps.setCapability("bstack:options", browserstackOptions);
+        caps.setCapability("browserName", "Chrome");
+        caps.setCapability("browserVersion", " latest");
+        caps.setCapability("bstack:options", browserstackOptions);
 
-		String bsUrl = "https://" + ReadProperties.get("bs.username") + ":" + ReadProperties.get("bs.accesskey")
-				+ "@hub.browserstack.com/wd/hub";
+        String bsUrl = "https://" 
+            + ReadProperties.get("bs.username") 
+            + ":" 
+            + ReadProperties.get("bs.accesskey") 
+            + "@hub.browserstack.com/wd/hub";
 
-		driver = new RemoteWebDriver(new URL(bsUrl), caps);
+        driver = new RemoteWebDriver(new URL(bsUrl), caps);
 		((RemoteWebDriver) driver).setFileDetector(new LocalFileDetector());
 	}
 
