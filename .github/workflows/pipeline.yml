@@ -20,6 +20,8 @@ jobs:
         uses: browser-actions/setup-chrome@v1
 
       - name: Ejecutar pruebas
+        env:
+          HEADLESS: true
         run: mvn clean test
 
       - name: Guardar reporte
