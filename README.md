@@ -2,6 +2,9 @@
 
 Proyecto de automatizacion de pruebas para la aplicacion OrangeHRM, con pruebas de UI, API y Performance.
 
+## Carpeta publica del Drive
+`https://drive.google.com/drive/folders/1WXfraQm5csIi7oeBdaTKpEU_u23x8PP6?usp=drive_link`
+
 ---
 
 ## Configuración pruebas UI
